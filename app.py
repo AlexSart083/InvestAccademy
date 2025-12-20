@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # Import dei capitoli
-from capitoli import capitolo_01, capitolo_02
+from capitoli import capitolo_01, capitolo_02, capitolo_03, capitolo_04
 
 # Dizionario dei capitoli disponibili
 CAPITOLI = {
@@ -25,6 +25,14 @@ CAPITOLI = {
     2: {
         "titolo": "Interesse, inflazione e rischio",
         "modulo": capitolo_02
+    },
+    3: {
+        "titolo": "Risparmio e obiettivi finanziari",
+        "modulo": capitolo_03
+    },
+    4: {
+        "titolo": "Il fondo di emergenza",
+        "modulo": capitolo_04
     }
 }
 
@@ -45,9 +53,9 @@ def render_home():
     - Controllare il tuo cash flow mensile
     - Comprendere interesse composto e inflazione
     - Costruire un fondo di emergenza
+    - Definire obiettivi finanziari SMART
     - Gestire i debiti in modo strategico
     - Investire con consapevolezza
-    - Evitare gli errori comportamentali più comuni
     
     ---
     
@@ -95,7 +103,7 @@ def main():
                 st.rerun()
         
         st.markdown("---")
-        st.caption("Versione 0.1.0")
+        st.caption("Versione 0.2.0")
     
     # Rendering pagina corrente
     if st.session_state.pagina == "home":
