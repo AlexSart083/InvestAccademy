@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # Import dei capitoli
-from capitoli import capitolo_01, capitolo_02, capitolo_03, capitolo_04
+from capitoli import capitolo_01, capitolo_02, capitolo_03, capitolo_04, capitolo_05, capitolo_06
 
 # Dizionario dei capitoli disponibili
 CAPITOLI = {
@@ -33,6 +33,14 @@ CAPITOLI = {
     4: {
         "titolo": "Il fondo di emergenza",
         "modulo": capitolo_04
+    },
+    5: {
+        "titolo": "Scelta del conto e struttura dei conti personali",
+        "modulo": capitolo_05
+    },
+    6: {
+        "titolo": "Gestione del debito: strategie e priorità",
+        "modulo": capitolo_06
     }
 }
 
@@ -54,6 +62,7 @@ def render_home():
     - Comprendere interesse composto e inflazione
     - Costruire un fondo di emergenza
     - Definire obiettivi finanziari SMART
+    - Scegliere i conti giusti e strutturarli efficacemente
     - Gestire i debiti in modo strategico
     - Investire con consapevolezza
     
@@ -103,7 +112,7 @@ def main():
                 st.rerun()
         
         st.markdown("---")
-        st.caption("Versione 0.2.0")
+        st.caption("Versione 0.3.0")
     
     # Rendering pagina corrente
     if st.session_state.pagina == "home":
