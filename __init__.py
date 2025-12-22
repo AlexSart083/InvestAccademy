@@ -12,6 +12,12 @@ from . import capitolo_07
 from . import capitolo_08
 from . import capitolo_09
 from . import capitolo_10
+from . import capitolo_11
+from . import capitolo_12
+from . import capitolo_13
+from . import capitolo_14
+from . import capitolo_15
+from . import capitolo_16
 
 __all__ = [
     "capitolo_01", 
@@ -23,5 +29,11 @@ __all__ = [
     "capitolo_07",
     "capitolo_08",
     "capitolo_09",
-    "capitolo_10"
+    "capitolo_10",
+    "capitolo_11",
+    "capitolo_12",
+    "capitolo_13",
+    "capitolo_14",
+    "capitolo_15",
+    "capitolo_16"
 ]
