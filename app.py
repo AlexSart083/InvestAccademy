@@ -14,7 +14,11 @@ st.set_page_config(
 )
 
 # Import dei capitoli
-from capitoli import capitolo_01, capitolo_02, capitolo_03, capitolo_04, capitolo_05, capitolo_06, capitolo_07, capitolo_08
+from capitoli import (
+    capitolo_01, capitolo_02, capitolo_03, capitolo_04, 
+    capitolo_05, capitolo_06, capitolo_07, capitolo_08,
+    capitolo_09, capitolo_10
+)
 
 # Dizionario dei capitoli disponibili
 CAPITOLI = {
@@ -49,6 +53,14 @@ CAPITOLI = {
     8: {
         "titolo": "Introduzione agli investimenti",
         "modulo": capitolo_08
+    },
+    9: {
+        "titolo": "Rendimento, rischio e diversificazione",
+        "modulo": capitolo_09
+    },
+    10: {
+        "titolo": "Asset allocation e costruzione del portafoglio",
+        "modulo": capitolo_10
     }
 }
 
@@ -74,7 +86,8 @@ def render_home():
     - Gestire i debiti in modo strategico
     - Migliorare il tuo punteggio creditizio
     - Comprendere le basi degli investimenti
-    - Investire con consapevolezza
+    - Applicare i principi di diversificazione
+    - Costruire una corretta asset allocation
     
     ---
     
@@ -122,7 +135,7 @@ def main():
                 st.rerun()
         
         st.markdown("---")
-        st.caption("Versione 0.4.0")
+        st.caption("Versione 0.5.0")
     
     # Rendering pagina corrente
     if st.session_state.pagina == "home":

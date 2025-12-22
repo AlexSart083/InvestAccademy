@@ -22,6 +22,8 @@ Corso interattivo di finanza personale realizzato con Streamlit.
 | 6 | Gestione del debito: strategie e priorità | Strategie Snowball e Avalanche, consolidamento, rinegoziazione |
 | 7 | Credito e punteggio creditizio | Fattori del punteggio, utilizzo del credito, miglioramento profilo |
 | 8 | Introduzione agli investimenti | Asset class, rischio/rendimento, orizzonte temporale |
+| 9 | Rendimento, rischio e diversificazione | Tipologie di rischio, correlazione, principi di diversificazione |
+| 10 | Asset allocation e costruzione del portafoglio | Asset allocation strategica/tattica, profili di rischio, costruzione portafoglio |
 
 ## 🛠️ Esecuzione locale
 
@@ -49,18 +51,33 @@ investacademy/
     ├── capitolo_05.py     # Scelta del conto e struttura dei conti
     ├── capitolo_06.py     # Gestione del debito
     ├── capitolo_07.py     # Credito e punteggio creditizio
-    └── capitolo_08.py     # Introduzione agli investimenti
+    ├── capitolo_08.py     # Introduzione agli investimenti
+    ├── capitolo_09.py     # Rendimento, rischio e diversificazione
+    └── capitolo_10.py     # Asset allocation e costruzione portafoglio
 ```
 
 ## ✨ Funzionalità
 
+### Contenuti Educativi
 - 📚 **Contenuti teorici** - Spiegazioni chiare e strutturate
-- 🧮 **Calcolatori interattivi** - Cash flow, interesse composto, rendimento reale, fondo emergenze, utilizzo credito, crescita investimenti
-- 📝 **Quiz di verifica** - Test con feedback immediato
+- 🎯 **Obiettivi SMART** - Framework per definire obiettivi finanziari
 - 💡 **Takeaways** - Punti chiave per ogni capitolo
-- 🎯 **Obiettivi SMART** - Strumenti per definire e raggiungere obiettivi finanziari
-- 💳 **Analisi credito** - Calcolatori per punteggio creditizio e utilizzo carte
-- 📈 **Simulatori investimento** - Strumenti per comprendere crescita e rischio
+
+### Calcolatori Interattivi
+- 💰 **Cash Flow** - Analisi entrate/uscite mensili
+- 📊 **Interesse Composto** - Simulazione crescita capitale
+- 🎯 **Rendimento Reale** - Calcolo al netto dell'inflazione
+- 🏦 **Fondo Emergenze** - Dimensionamento e piano costruzione
+- 💳 **Utilizzo Credito** - Analisi punteggio creditizio
+- 📈 **Crescita Investimenti** - Simulazione portafogli
+- 🔗 **Correlazione** - Effetto diversificazione
+- 🎨 **Asset Allocation** - Costruzione portafoglio personalizzato
+- 💼 **Profilo di Rischio** - Questionario e allocazione suggerita
+
+### Verifica Apprendimento
+- 📝 **Quiz interattivi** - Test con feedback immediato
+- ✅ **Esercizi guidati** - Applicazioni pratiche
+- 📋 **Checklist** - Strumenti di auto-valutazione
 
 ---
 
