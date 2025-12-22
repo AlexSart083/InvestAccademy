@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # Import dei capitoli
-from capitoli import capitolo_01, capitolo_02, capitolo_03, capitolo_04, capitolo_05, capitolo_06
+from capitoli import capitolo_01, capitolo_02, capitolo_03, capitolo_04, capitolo_05, capitolo_06, capitolo_07, capitolo_08
 
 # Dizionario dei capitoli disponibili
 CAPITOLI = {
@@ -41,6 +41,14 @@ CAPITOLI = {
     6: {
         "titolo": "Gestione del debito: strategie e priorità",
         "modulo": capitolo_06
+    },
+    7: {
+        "titolo": "Credito e punteggio creditizio",
+        "modulo": capitolo_07
+    },
+    8: {
+        "titolo": "Introduzione agli investimenti",
+        "modulo": capitolo_08
     }
 }
 
@@ -64,6 +72,8 @@ def render_home():
     - Definire obiettivi finanziari SMART
     - Scegliere i conti giusti e strutturarli efficacemente
     - Gestire i debiti in modo strategico
+    - Migliorare il tuo punteggio creditizio
+    - Comprendere le basi degli investimenti
     - Investire con consapevolezza
     
     ---
@@ -112,7 +122,7 @@ def main():
                 st.rerun()
         
         st.markdown("---")
-        st.caption("Versione 0.3.0")
+        st.caption("Versione 0.4.0")
     
     # Rendering pagina corrente
     if st.session_state.pagina == "home":

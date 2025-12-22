@@ -18,6 +18,10 @@ Corso interattivo di finanza personale realizzato con Streamlit.
 | 2 | Interesse, inflazione e rischio | Interesse semplice/composto, rendimento reale, diversificazione |
 | 3 | Risparmio e obiettivi finanziari | Metodo SMART, piano di risparmio, regola 50/30/20 |
 | 4 | Il fondo di emergenza | Dimensionamento, costruzione, gestione del fondo |
+| 5 | Scelta del conto e struttura dei conti personali | Criteri di scelta, struttura multi-conto, automazione |
+| 6 | Gestione del debito: strategie e priorità | Strategie Snowball e Avalanche, consolidamento, rinegoziazione |
+| 7 | Credito e punteggio creditizio | Fattori del punteggio, utilizzo del credito, miglioramento profilo |
+| 8 | Introduzione agli investimenti | Asset class, rischio/rendimento, orizzonte temporale |
 
 ## 🛠️ Esecuzione locale
 
@@ -41,16 +45,22 @@ investacademy/
     ├── capitolo_01.py     # Introduzione finanza personale
     ├── capitolo_02.py     # Interesse, inflazione, rischio
     ├── capitolo_03.py     # Risparmio e obiettivi finanziari
-    └── capitolo_04.py     # Il fondo di emergenza
+    ├── capitolo_04.py     # Il fondo di emergenza
+    ├── capitolo_05.py     # Scelta del conto e struttura dei conti
+    ├── capitolo_06.py     # Gestione del debito
+    ├── capitolo_07.py     # Credito e punteggio creditizio
+    └── capitolo_08.py     # Introduzione agli investimenti
 ```
 
 ## ✨ Funzionalità
 
 - 📚 **Contenuti teorici** - Spiegazioni chiare e strutturate
-- 🧮 **Calcolatori interattivi** - Cash flow, interesse composto, rendimento reale, fondo emergenze
+- 🧮 **Calcolatori interattivi** - Cash flow, interesse composto, rendimento reale, fondo emergenze, utilizzo credito, crescita investimenti
 - 📝 **Quiz di verifica** - Test con feedback immediato
 - 💡 **Takeaways** - Punti chiave per ogni capitolo
 - 🎯 **Obiettivi SMART** - Strumenti per definire e raggiungere obiettivi finanziari
+- 💳 **Analisi credito** - Calcolatori per punteggio creditizio e utilizzo carte
+- 📈 **Simulatori investimento** - Strumenti per comprendere crescita e rischio
 
 ---
 
