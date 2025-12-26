@@ -31,7 +31,7 @@ QUIZ = [
             "La strategia di trading"
         ],
         "risposta_corretta": "La distribuzione del capitale tra diverse classi di attivi",
-        "spiegazione": "L'asset allocation è la distribuzione strategica del capitale tra azioni, obbligazioni, liquidità e altri asset."
+        "spiegazione": "L'asset allocation è la distribuzione strategica del capitale tra azioni, obbligazioni, oro e altri asset."
     },
     {
         "id": 2,
@@ -55,7 +55,7 @@ QUIZ = [
     },
     {
         "id": 4,
-        "domanda": "Un portafoglio con 80% azioni e 20% obbligazioni è adatto a:",
+        "domanda": "Un portafoglio con 80% azioni e 20% obbligazioni/oro è adatto a:",
         "tipo": "scelta_multipla",
         "opzioni": [
             "Profilo prudente con orizzonte breve",
@@ -68,10 +68,10 @@ QUIZ = [
     },
     {
         "id": 5,
-        "domanda": "Copiare il portafoglio di altri investitori è sempre una buona strategia.",
+        "domanda": "La liquidità dovrebbe far parte del portafoglio di lungo termine.",
         "tipo": "vero_falso",
         "risposta_corretta": False,
-        "spiegazione": "Falso. Ogni investitore ha obiettivi, orizzonte e tolleranza al rischio diversi."
+        "spiegazione": "Falso. La liquidità serve per fondo emergenze e breve termine, non per il portafoglio investito."
     }
 ]
 
@@ -83,17 +83,17 @@ def calcola_profilo_rischio(domande_risposte: dict) -> dict:
     if punteggio <= 10:
         profilo = "Prudente"
         descrizione = "Preferisci stabilità e hai bassa tolleranza alle oscillazioni"
-        allocazione = {"Azioni": 30, "Obbligazioni": 60, "Liquidità": 10}
+        allocazione = {"Azioni": 30, "Obbligazioni": 60, "Oro": 10}
         colore = "🟢"
     elif punteggio <= 17:
         profilo = "Bilanciato"
         descrizione = "Cerchi equilibrio tra crescita e stabilità"
-        allocazione = {"Azioni": 60, "Obbligazioni": 35, "Liquidità": 5}
+        allocazione = {"Azioni": 60, "Obbligazioni": 35, "Oro": 5}
         colore = "🔵"
     else:
         profilo = "Dinamico"
         descrizione = "Punti alla crescita di lungo periodo e accetti volatilità"
-        allocazione = {"Azioni": 80, "Obbligazioni": 15, "Liquidità": 5}
+        allocazione = {"Azioni": 80, "Obbligazioni": 15, "Oro": 5}
         colore = "🔴"
     
     return {
@@ -105,32 +105,32 @@ def calcola_profilo_rischio(domande_risposte: dict) -> dict:
     }
 
 
-def simula_portafoglio(azioni_perc: float, obblig_perc: float, liquid_perc: float, 
+def simula_portafoglio(azioni_perc: float, obblig_perc: float, oro_perc: float, 
                        capitale: float, anni: int) -> dict:
     """Simula l'andamento di un portafoglio con diversa asset allocation"""
     
     # Rendimenti storici medi approssimativi
     rend_azioni = 8.0
     rend_obblig = 3.5
-    rend_liquid = 1.5
+    rend_oro = 2.5  # Rendimento storico reale dell'oro
     
     # Volatilità storica approssimativa
     vol_azioni = 18.0
     vol_obblig = 6.0
-    vol_liquid = 0.5
+    vol_oro = 15.0
     
     # Calcolo rendimento e volatilità del portafoglio
     rendimento_portafoglio = (
         azioni_perc / 100 * rend_azioni +
         obblig_perc / 100 * rend_obblig +
-        liquid_perc / 100 * rend_liquid
+        oro_perc / 100 * rend_oro
     )
     
     # Approssimazione semplificata della volatilità del portafoglio
     vol_portafoglio = (
         azioni_perc / 100 * vol_azioni +
         obblig_perc / 100 * vol_obblig +
-        liquid_perc / 100 * vol_liquid
+        oro_perc / 100 * vol_oro
     )
     
     # Calcolo montante atteso
@@ -160,7 +160,7 @@ def render_contenuto():
     ## Cos'è l'asset allocation
     
     L'asset allocation è la **distribuzione del capitale tra diverse classi di attivi** 
-    (azioni, obbligazioni, liquidità, ecc.).
+    (azioni, obbligazioni, oro, ecc.).
     
     > Numerosi studi dimostrano che l'asset allocation spiega la **maggior parte dei risultati** 
     > di un portafoglio nel lungo periodo, molto più della scelta dei singoli titoli.
@@ -256,7 +256,7 @@ def render_contenuto():
             **Esempio:**
             - 70% azioni
             - 25% obbligazioni
-            - 5% liquidità
+            - 5% oro
             
             **Caratteristiche:**
             - Cambia raramente
@@ -296,7 +296,7 @@ def render_contenuto():
             **Allocazione:**
             - 30% Azioni
             - 60% Obbligazioni
-            - 10% Liquidità
+            - 10% Oro
             
             **Adatto a:**
             - Orizzonte < 5 anni
@@ -326,7 +326,7 @@ def render_contenuto():
             **Allocazione:**
             - 60% Azioni
             - 35% Obbligazioni
-            - 5% Liquidità
+            - 5% Oro
             
             **Adatto a:**
             - Orizzonte 5-10 anni
@@ -356,7 +356,7 @@ def render_contenuto():
             **Allocazione:**
             - 80% Azioni
             - 15% Obbligazioni
-            - 5% Liquidità
+            - 5% Oro
             
             **Adatto a:**
             - Orizzonte 10+ anni
@@ -383,31 +383,69 @@ def render_contenuto():
     
     st.markdown("---")
     
-    st.markdown("## Il ruolo della liquidità nel portafoglio")
+    st.markdown("## Il ruolo dell'oro nel portafoglio")
     
     st.markdown("""
-    La liquidità (conti deposito, money market, ecc.) ha funzioni specifiche:
+    L'oro non genera reddito (come dividendi o cedole) ma ha caratteristiche uniche 
+    come asset di diversificazione nel lungo periodo.
     """)
     
     col1, col2 = st.columns(2)
     
     with col1:
-        st.markdown("### ✅ Vantaggi")
+        st.markdown("### ✅ Funzioni principali")
         st.markdown("""
-        - Riduce la volatilità complessiva
-        - Permette di cogliere opportunità
-        - Copre esigenze di breve termine
-        - Dà stabilità psicologica
+        - **Protezione dall'inflazione** di lungo periodo
+        - **Decorrelazione** con azioni e obbligazioni
+        - **Riserva di valore** in scenari di stress sistemico
+        - **Diversificazione geografica** e valutaria implicita
         """)
     
     with col2:
-        st.markdown("### ⚠️ Limiti")
+        st.markdown("### ⚠️ Limiti da considerare")
         st.markdown("""
-        - Rendimento molto basso
-        - Può non battere l'inflazione
-        - Troppa liquidità riduce la crescita
-        - Costo opportunità elevato
+        - Non genera flussi di cassa
+        - Volatilità significativa nel breve termine
+        - Rendimento reale storicamente modesto
+        - Può rimanere stagnante per lunghi periodi
         """)
+    
+    st.success("""
+    ✅ **Utilizzo ottimale:**
+    
+    L'oro funziona bene come componente stabile del **5-10%** del portafoglio, 
+    per ridurre la correlazione complessiva e fornire protezione in scenari estremi.
+    """)
+    
+    st.markdown("---")
+    
+    st.markdown("## La liquidità: dove deve stare")
+    
+    with st.container(border=True):
+        st.markdown("### ⚠️ IMPORTANTE: La liquidità NON fa parte del portafoglio di investimento")
+        
+        st.markdown("""
+        La liquidità (conti correnti, conti deposito) serve per esigenze completamente diverse 
+        dal portafoglio investito.
+        
+        **La liquidità serve per:**
+        - 💰 Fondo emergenze (3-6 mesi di spese)
+        - 📅 Spese programmate a breve termine (< 3 anni)
+        - 🔧 Buffer operativo per imprevisti
+        
+        **Regola pratica:** La liquidità va tenuta **separata** dal portafoglio investito. 
+        Non ha senso "allocare" liquidità in un portafoglio di lungo termine perché:
+        - Erode valore reale nel tempo a causa dell'inflazione
+        - Non contribuisce alla crescita patrimoniale
+        - Ha funzioni operative, non di investimento
+        """)
+    
+    st.error("""
+    ❌ **Errore comune:**
+    
+    Includere il 5-10% di "liquidità" nel portafoglio investito è inefficiente. 
+    Meglio aumentare leggermente l'oro o le obbligazioni brevi se si cerca stabilità.
+    """)
     
     st.markdown("---")
     
@@ -419,7 +457,8 @@ def render_contenuto():
         ("❌ Cambiare strategia nelle fasi negative", "Cristallizza le perdite e impedisce il recupero"),
         ("❌ Concentrarsi sui singoli strumenti", "Perdere di vista la visione d'insieme"),
         ("❌ Ignorare l'orizzonte temporale", "Allocazione troppo aggressiva o troppo conservativa"),
-        ("❌ Non ribilanciare mai", "Il portafoglio si sbilancia nel tempo")
+        ("❌ Non ribilanciare mai", "Il portafoglio si sbilancia nel tempo"),
+        ("❌ Includere liquidità nel portafoglio", "La liquidità non è un asset di investimento")
     ]
     
     for errore, spiegazione in errori:
@@ -540,6 +579,8 @@ def render_calc_profilo():
         st.info("""
         💡 **Ricorda:** Questo è solo un punto di partenza. 
         Considera anche altri fattori personali e consulta un professionista se necessario.
+        
+        **Importante:** La liquidità per emergenze va tenuta SEPARATA da questo portafoglio.
         """)
 
 
@@ -589,12 +630,12 @@ def render_calc_simulatore():
             key="cap10_sim_obblig"
         )
         
-        liquidita = 100 - azioni - obbligazioni
+        oro = 100 - azioni - obbligazioni
         
-        st.metric("Liquidità (%)", liquidita)
+        st.metric("Oro (%)", oro)
     
     with col2:
-        simulazione = simula_portafoglio(azioni, obbligazioni, liquidita, capitale, anni)
+        simulazione = simula_portafoglio(azioni, obbligazioni, oro, capitale, anni)
         
         st.markdown("### Risultati Simulazione")
         
@@ -692,15 +733,15 @@ def render_calc_analizzatore():
             key="cap10_anal_obblig"
         )
         
-        liquidita_val = st.number_input(
-            "💵 Liquidità (€)",
+        oro_val = st.number_input(
+            "🟡 Oro (€)",
             min_value=0.0,
             value=500.0,
             step=100.0,
-            key="cap10_anal_liquid"
+            key="cap10_anal_oro"
         )
         
-        totale_inserito = azioni_val + obbligazioni_val + liquidita_val
+        totale_inserito = azioni_val + obbligazioni_val + oro_val
     
     with col2:
         if abs(totale_inserito - capitale_totale) > 1:
@@ -711,21 +752,21 @@ def render_calc_analizzatore():
             # Calcolo percentuali
             azioni_perc = (azioni_val / capitale_totale * 100) if capitale_totale > 0 else 0
             obblig_perc = (obbligazioni_val / capitale_totale * 100) if capitale_totale > 0 else 0
-            liquid_perc = (liquidita_val / capitale_totale * 100) if capitale_totale > 0 else 0
+            oro_perc = (oro_val / capitale_totale * 100) if capitale_totale > 0 else 0
             
             # Tabella allocazione
             df_current = pd.DataFrame({
-                "Asset Class": ["Azioni", "Obbligazioni", "Liquidità"],
-                "Valore (€)": [azioni_val, obbligazioni_val, liquidita_val],
-                "Percentuale": [f"{azioni_perc:.1f}%", f"{obblig_perc:.1f}%", f"{liquid_perc:.1f}%"]
+                "Asset Class": ["Azioni", "Obbligazioni", "Oro"],
+                "Valore (€)": [azioni_val, obbligazioni_val, oro_val],
+                "Percentuale": [f"{azioni_perc:.1f}%", f"{obblig_perc:.1f}%", f"{oro_perc:.1f}%"]
             })
             
             st.dataframe(df_current, use_container_width=True, hide_index=True)
             
             # Grafico
             chart_data = pd.DataFrame({
-                "Valore": [azioni_val, obbligazioni_val, liquidita_val]
-            }, index=["Azioni", "Obbligazioni", "Liquidità"])
+                "Valore": [azioni_val, obbligazioni_val, oro_val]
+            }, index=["Azioni", "Obbligazioni", "Oro"])
             
             st.bar_chart(chart_data)
             
@@ -766,7 +807,7 @@ def render_calc_analizzatore():
                 "Profilo": ["Tuo Portafoglio", "Prudente", "Bilanciato", "Dinamico"],
                 "Azioni": [f"{azioni_perc:.0f}%", "30%", "60%", "80%"],
                 "Obbligazioni": [f"{obblig_perc:.0f}%", "60%", "35%", "15%"],
-                "Liquidità": [f"{liquid_perc:.0f}%", "10%", "5%", "5%"]
+                "Oro": [f"{oro_perc:.0f}%", "10%", "5%", "5%"]
             })
             
             st.dataframe(df_confronto, use_container_width=True, hide_index=True)
@@ -837,8 +878,9 @@ def render_takeaways():
         "L'allocazione dipende da tre elementi: orizzonte, capacità e tolleranza al rischio",
         "L'asset allocation strategica è la struttura di base, quella tattica prevede aggiustamenti temporanei",
         "Non esiste un'allocazione 'migliore' in assoluto, ma quella più adatta a te",
-        "La coerenza è più importante dell'ottimizzazione estrema",
-        "Copiare portafogli altrui senza considerare il proprio profilo è un errore"
+        "L'oro offre decorrelazione e protezione, ideale per il 5-10% del portafoglio",
+        "La liquidità NON fa parte del portafoglio investito: serve per il fondo emergenze",
+        "La coerenza è più importante dell'ottimizzazione estrema"
     ]
     
     for t in takeaways:
@@ -864,17 +906,22 @@ def render_takeaways():
         
         - **Azioni:** _____% 
         - **Obbligazioni:** _____%
-        - **Liquidità:** _____%
+        - **Oro:** _____%
         - **Totale:** 100%
         
-        **3. Regole di comportamento**
+        **3. Liquidità separata**
+        
+        - **Fondo emergenze (fuori dal portafoglio):** €_____
+        - **Obiettivo:** _____ mesi di spese
+        
+        **4. Regole di comportamento**
         
         Scrivi le tue regole:
         - Ribilancio ogni: _____________
         - In caso di ribasso del 20%, farò: _____________
         - Revisione strategia se: _____________
         
-        **4. Commitment**
+        **5. Commitment**
         
         "Mi impegno a seguire questa allocazione per almeno _____ anni, 
         modificandola solo se cambiano i miei obiettivi o la mia situazione personale, 
