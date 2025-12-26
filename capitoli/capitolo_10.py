@@ -206,13 +206,14 @@ def render_contenuto():
     
     with col1:
         with st.container(border=True):
-            st.markdown("### ⏱️ Orizzonte Temporale")
+            st.markdown("### ⏱️ Orizzonte Temporale Minimo")
             st.markdown("""
             Più è lungo, maggiore può essere l'esposizione al rischio.
             
             **Esempi:**
-            - < 3 anni: prudente
-            - 5-10 anni: bilanciato
+            - <7 anni: molto prudente(obligazionarion a scadenza)
+            - 7 anni: prudente
+            - 10 anni: bilanciato
             - 10+ anni: dinamico
             """)
     
