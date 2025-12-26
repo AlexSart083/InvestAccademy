@@ -55,16 +55,16 @@ QUIZ = [
     },
     {
         "id": 4,
-        "domanda": "Un portafoglio con 80% azioni e 20% obbligazioni/oro è adatto a:",
+        "domanda": "Un portafoglio con 80% azioni è adatto a:",
         "tipo": "scelta_multipla",
         "opzioni": [
-            "Profilo prudente con orizzonte breve",
-            "Profilo dinamico con orizzonte lungo",
-            "Qualsiasi investitore",
+            "Orizzonte 5 anni con alta tolleranza",
+            "Orizzonte superiore a 10 anni con alta tolleranza",
+            "Qualsiasi orizzonte se si accetta volatilità",
             "Solo investitori professionali"
         ],
-        "risposta_corretta": "Profilo dinamico con orizzonte lungo",
-        "spiegazione": "Un'allocazione così aggressiva richiede alta tolleranza al rischio e orizzonte temporale lungo (10+ anni)."
+        "risposta_corretta": "Orizzonte superiore a 10 anni con alta tolleranza",
+        "spiegazione": "Un'allocazione così aggressiva richiede orizzonte temporale superiore a 10 anni E alta tolleranza al rischio. L'orizzonte lungo permette di attraversare i cicli di mercato."
     },
     {
         "id": 5,
@@ -243,6 +243,48 @@ def render_contenuto():
     
     st.markdown("---")
     
+    st.markdown("## L'importanza dell'orizzonte temporale")
+    
+    st.markdown("""
+    L'orizzonte temporale è probabilmente il fattore più importante nell'asset allocation, 
+    più della tolleranza al rischio stessa.
+    
+    **Perché il tempo riduce il rischio:**
+    - Permette di attraversare cicli di mercato completi
+    - Consente all'interesse composto di lavorare
+    - Aumenta drasticamente la probabilità di rendimenti positivi
+    - Riduce l'impatto di decisioni emotive
+    """)
+    
+    with st.container(border=True):
+        st.markdown("### 📊 Probabilità storiche: il potere del tempo")
+        
+        st.markdown("""
+        Le statistiche storiche (mercati sviluppati, 1926-2023) mostrano come 
+        **l'orizzonte temporale trasformi il rischio**:
+        
+        **Portafoglio Bilanciato (60/40):**
+        - A 1 anno: ~70% probabilità rendimento positivo
+        - A 5 anni: ~88% probabilità rendimento positivo
+        - A 10 anni: ~97% probabilità rendimento positivo
+        - A 20 anni: ~100% probabilità rendimento positivo
+        
+        **Questo spiega perché:**
+        - Orizzonti brevi (<7 anni) = Allocazioni conservative necessarie
+        - Orizzonti medi (10 anni) = Spazio per portafogli bilanciati
+        - Orizzonti lunghi (>10 anni) = Possibilità di allocazioni più aggressive
+        """)
+    
+    st.success("""
+    ✅ **Regola pratica:**
+    
+    Non guardare alla tua "tolleranza al rischio" emotiva, ma al tuo **orizzonte temporale reale**. 
+    Un orizzonte lungo ti permette di accettare più volatilità perché le probabilità 
+    di successo aumentano drasticamente.
+    """)
+    
+    st.markdown("---")
+    
     st.markdown("## Asset allocation strategica vs tattica")
     
     col1, col2 = st.columns(2)
@@ -251,17 +293,14 @@ def render_contenuto():
         with st.container(border=True):
             st.markdown("### 🎯 Asset Allocation Strategica")
             st.markdown("""
-            Struttura di base del portafoglio, definita con visione di lungo periodo.
-            
-            **Esempio:**
-            - 70% azioni
-            - 25% obbligazioni
-            - 5% oro
+            Struttura di base del portafoglio, definita con visione di lungo periodo 
+            in base a obiettivi, orizzonte e tolleranza al rischio.
             
             **Caratteristiche:**
-            - Cambia raramente
-            - Riflette obiettivi principali
-            - Base della strategia
+            - Cambia raramente (solo se cambiano obiettivi o situazione personale)
+            - Riflette i tuoi obiettivi principali
+            - È la base della strategia di investimento
+            - Indipendente dai movimenti di mercato
             """)
     
     with col2:
@@ -287,7 +326,7 @@ def render_contenuto():
     tab1, tab2, tab3 = st.tabs(["Prudente", "Bilanciato", "Dinamico"])
     
     with tab1:
-        st.markdown("### 🟢 Profilo Prudente")
+        st.markdown("### 🟢 Profilo Prudente (30/60/10)")
         
         col1, col2 = st.columns([1, 1])
         
@@ -299,25 +338,42 @@ def render_contenuto():
             - 10% Oro
             
             **Adatto a:**
-            - Orizzonte < 5 anni
+            - Orizzonte **minimo 7 anni**
             - Bassa tolleranza al rischio
-            - Bisogno di stabilità
-            - Capitale che potrebbe servire
+            - Priorità alla stabilità
+            - Chi non può permettersi volatilità elevata
             """)
         
         with col2:
             st.markdown("""
             **Caratteristiche:**
-            - Volatilità contenuta
+            - Volatilità contenuta (~8-10% annua)
             - Rendimento atteso moderato
-            - Protezione del capitale
-            - Poche oscillazioni
+            - Massima protezione del capitale
+            - Drawdown massimi storici ~15-20%
             
-            **Rendimento storico:** ~3-4% annuo
+            **Rendimento storico medio:** ~4-5% annuo
             """)
+        
+        st.markdown("---")
+        st.markdown("#### 📊 Probabilità storiche di rendimenti positivi")
+        
+        stats_prudente = pd.DataFrame({
+            "Orizzonte": ["5 anni", "10 anni", "20 anni"],
+            "Prob. rendimento positivo": ["~85%", "~95%", "~99%"],
+            "Range rendimenti tipici": ["2-7%", "3-6%", "3.5-5.5%"]
+        })
+        
+        st.dataframe(stats_prudente, use_container_width=True, hide_index=True)
+        
+        st.info("""
+        💡 Questo portafoglio ha storicamente generato rendimenti positivi in circa il 95% 
+        dei periodi di 10 anni, rendendolo adatto a chi privilegia la stabilità.
+        """)
     
     with tab2:
-        st.markdown("### 🔵 Profilo Bilanciato")
+        st.markdown("### 🔵 Profilo Bilanciato (60/35/5)")
+        st.caption("Equilibrio Rischio/Rendimento per investitori a lungo termine")
         
         col1, col2 = st.columns([1, 1])
         
@@ -329,25 +385,43 @@ def render_contenuto():
             - 5% Oro
             
             **Adatto a:**
-            - Orizzonte 5-10 anni
+            - Orizzonte **minimo 10 anni**
             - Tolleranza media al rischio
             - Equilibrio crescita/stabilità
-            - Obiettivi di medio periodo
+            - Piani pensione, risparmi per figli
             """)
         
         with col2:
             st.markdown("""
             **Caratteristiche:**
-            - Volatilità moderata
+            - Volatilità moderata (~12-14% annua)
             - Rendimento atteso equilibrato
-            - Bilanciamento rischio/rendimento
-            - Compromesso ragionevole
+            - Buon bilanciamento rischio/rendimento
+            - Drawdown massimi storici ~25-30%
             
-            **Rendimento storico:** ~5-6% annuo
+            **Rendimento storico medio:** ~6-7% annuo
             """)
+        
+        st.markdown("---")
+        st.markdown("#### 📊 Probabilità storiche di rendimenti positivi")
+        
+        stats_bilanciato = pd.DataFrame({
+            "Orizzonte": ["5 anni", "10 anni", "20 anni"],
+            "Prob. rendimento positivo": ["~88%", "~97%", "~100%"],
+            "Range rendimenti tipici": ["3-10%", "4-9%", "5-8%"]
+        })
+        
+        st.dataframe(stats_bilanciato, use_container_width=True, hide_index=True)
+        
+        st.success("""
+        ✅ Questo portafoglio rappresenta un ottimo compromesso per chi investe a lungo termine:
+        elevata probabilità di rendimenti positivi (~97% a 10 anni) con volatilità gestibile.
+        Ideale per piani pensionistici e accumuli multi-decennali.
+        """)
     
     with tab3:
-        st.markdown("### 🔴 Profilo Dinamico")
+        st.markdown("### 🔴 Profilo Dinamico (80/15/5)")
+        st.caption("Massima crescita per orizzonti molto lunghi")
         
         col1, col2 = st.columns([1, 1])
         
@@ -359,22 +433,40 @@ def render_contenuto():
             - 5% Oro
             
             **Adatto a:**
-            - Orizzonte 10+ anni
+            - Orizzonte **superiore a 10 anni**
             - Alta tolleranza al rischio
-            - Focus sulla crescita
-            - Capitale non necessario
+            - Focus sulla crescita massima
+            - Capitale completamente non necessario nel medio termine
             """)
         
         with col2:
             st.markdown("""
             **Caratteristiche:**
-            - Volatilità elevata
+            - Volatilità elevata (~15-18% annua)
             - Rendimento atteso alto
-            - Oscillazioni significative
-            - Richiede disciplina
+            - Oscillazioni significative di breve termine
+            - Drawdown massimi storici ~35-40%
             
-            **Rendimento storico:** ~7-8% annuo
+            **Rendimento storico medio:** ~7-8% annuo
             """)
+        
+        st.markdown("---")
+        st.markdown("#### 📊 Probabilità storiche di rendimenti positivi")
+        
+        stats_dinamico = pd.DataFrame({
+            "Orizzonte": ["5 anni", "10 anni", "20 anni"],
+            "Prob. rendimento positivo": ["~85%", "~95%", "~100%"],
+            "Range rendimenti tipici": ["1-13%", "4-11%", "6-9%"]
+        })
+        
+        st.dataframe(stats_dinamico, use_container_width=True, hide_index=True)
+        
+        st.warning("""
+        ⚠️ **Attenzione:** Questo portafoglio richiede disciplina ferrea. 
+        La volatilità elevata significa che periodi di perdite del 20-30% sono possibili 
+        e normali. Solo per chi può davvero permettersi di NON toccare il capitale per 10+ anni 
+        e ha la forza emotiva di attraversare ribassi significativi.
+        """)
     
     st.info("""
     💡 **Importante:** Non esiste un'allocazione "migliore" in assoluto. 
@@ -681,17 +773,36 @@ def render_calc_simulatore():
         
         if azioni >= 70:
             st.warning("""
-            ⚠️ **Portafoglio aggressivo**: alta esposizione azionaria. 
-            Richiede orizzonte lungo (10+ anni) e alta tolleranza al rischio.
+            ⚠️ **Portafoglio aggressivo (Dinamico)**: alta esposizione azionaria. 
+            
+            Richiede:
+            - Orizzonte temporale **superiore a 10 anni**
+            - Alta tolleranza al rischio
+            - Capacità di sopportare drawdown del 30-40%
             """)
-        elif azioni <= 40:
-            st.info("""
-            🔵 **Portafoglio conservativo**: priorità alla stabilità. 
-            Adatto per orizzonti brevi o bassa tolleranza al rischio.
-            """)
-        else:
+        elif azioni >= 50:
             st.success("""
             ✅ **Portafoglio bilanciato**: buon compromesso tra crescita e stabilità.
+            
+            Adatto per:
+            - Orizzonte temporale **minimo 10 anni**
+            - Tolleranza media al rischio
+            - Piani pensione e accumuli di lungo termine
+            """)
+        elif azioni >= 25:
+            st.info("""
+            🔵 **Portafoglio conservativo (Prudente)**: priorità alla stabilità. 
+            
+            Caratteristiche:
+            - Orizzonte temporale **minimo 7 anni**
+            - Bassa tolleranza al rischio
+            - Volatilità contenuta
+            """)
+        else:
+            st.error("""
+            🔴 **Portafoglio troppo conservativo**: rischio di non battere l'inflazione nel lungo periodo.
+            
+            Considera di aumentare leggermente la componente azionaria se l'orizzonte è superiore a 7 anni.
             """)
 
 
@@ -778,25 +889,31 @@ def render_calc_analizzatore():
                 st.error("""
                 🔴 **Profilo Dinamico/Aggressivo**
                 
-                - Alta esposizione azionaria
-                - Volatilità elevata
-                - Adatto per orizzonti lunghi (10+ anni)
+                - Alta esposizione azionaria (≥70%)
+                - Volatilità elevata (~15-18% annua)
+                - Orizzonte richiesto: **superiore a 10 anni**
+                - Drawdown attesi: 30-40%
+                - Probabilità rendimento positivo a 10 anni: ~95%
                 """)
             elif azioni_perc >= 50:
                 st.info("""
                 🔵 **Profilo Bilanciato**
                 
-                - Buon equilibrio rischio/rendimento
-                - Volatilità moderata
-                - Adatto per orizzonti medi (5-10 anni)
+                - Equilibrio rischio/rendimento
+                - Volatilità moderata (~12-14% annua)
+                - Orizzonte richiesto: **minimo 10 anni**
+                - Drawdown attesi: 25-30%
+                - Probabilità rendimento positivo a 10 anni: ~97%
                 """)
             else:
                 st.success("""
                 🟢 **Profilo Prudente/Conservativo**
                 
                 - Priorità alla stabilità
-                - Volatilità contenuta
-                - Adatto per orizzonti brevi (< 5 anni)
+                - Volatilità contenuta (~8-10% annua)
+                - Orizzonte richiesto: **minimo 7 anni**
+                - Drawdown attesi: 15-20%
+                - Probabilità rendimento positivo a 10 anni: ~95%
                 """)
             
             # Confronto con allocazioni standard
@@ -876,10 +993,12 @@ def render_takeaways():
         "Non conta tanto cosa compri, ma come distribuisci il capitale",
         "Il portafoglio deve essere sostenibile sia finanziariamente che emotivamente",
         "L'allocazione dipende da tre elementi: orizzonte, capacità e tolleranza al rischio",
+        "Orizzonte minimo: 7 anni per prudente, 10 anni per bilanciato, >10 anni per dinamico",
         "L'asset allocation strategica è la struttura di base, quella tattica prevede aggiustamenti temporanei",
         "Non esiste un'allocazione 'migliore' in assoluto, ma quella più adatta a te",
         "L'oro offre decorrelazione e protezione, ideale per il 5-10% del portafoglio",
         "La liquidità NON fa parte del portafoglio investito: serve per il fondo emergenze",
+        "Le probabilità storiche di rendimenti positivi aumentano significativamente con l'orizzonte temporale",
         "La coerenza è più importante dell'ottimizzazione estrema"
     ]
     
